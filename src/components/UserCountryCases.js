@@ -3,6 +3,7 @@ import axios from "axios";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
+import { Container } from "@material-ui/core";
 import CardContent from "@material-ui/core/CardContent";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Typography from "@material-ui/core/Typography";
@@ -13,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
   },
   textColor: {
-    color: " #581845",
+    color: "#581845",
   },
 }));
 const UserCountryCases = (props) => {
@@ -69,7 +70,7 @@ const UserCountryCases = (props) => {
         <CardContent>
           <Typography
             className={classes.textColor}
-            variant={matchesMD ? "h5" : "h3"}
+            variant={matchesMD ? "h6" : "h3"}
           >
             Cases in {countryIn}
           </Typography>
@@ -79,17 +80,17 @@ const UserCountryCases = (props) => {
           ) : (
             countryData.map((data, i) => {
               return (
-                <div key={i}>
-                  <Typography variant={matchesMD ? "h6" : "h5"}>
-                    Cases :{" "}
+                <Container key={i}>
+                  <Typography variant="h6">
+                    <span style={{ color: "#581845" }}>Cases : </span>
                     <span
                       style={{ color: colors(data.cases), fontWeight: "bold" }}
                     >
                       {data.cases}
                     </span>
                   </Typography>
-                  <Typography variant={matchesMD ? "h6" : "h5"}>
-                    Critical :{" "}
+                  <Typography variant="h6">
+                    <span style={{ color: "#581845" }}>Critical : </span>
                     <span
                       style={{
                         color: colors(data.critical),
@@ -99,14 +100,14 @@ const UserCountryCases = (props) => {
                       {data.critical}
                     </span>
                   </Typography>
-                  <Typography variant={matchesMD ? "h6" : "h5"}>
-                    Deaths :{" "}
+                  <Typography variant="h6">
+                    <span style={{ color: "#581845" }}>Deaths : </span>
                     <span style={{ color: "red", fontWeight: "bold" }}>
                       {data.deaths}
                     </span>
                   </Typography>
-                  <Typography variant={matchesMD ? "h6" : "h5"}>
-                    Recovered :{" "}
+                  <Typography variant="h6">
+                    <span style={{ color: "#581845" }}>Recovered : </span>
                     <span
                       style={{
                         color: "#58d68d",
@@ -116,8 +117,8 @@ const UserCountryCases = (props) => {
                       {data.recovered}
                     </span>
                   </Typography>
-                  <Typography variant={matchesMD ? "h6" : "h5"}>
-                    Today's Cases :{" "}
+                  <Typography variant="h6">
+                    <span style={{ color: "#581845" }}>Today's Cases : </span>
                     <span
                       style={{
                         color: colors(data.todayCases),
@@ -127,8 +128,8 @@ const UserCountryCases = (props) => {
                       {data.todayCases}
                     </span>
                   </Typography>
-                  <Typography variant={matchesMD ? "h6" : "h5"}>
-                    Today's Deaths :{" "}
+                  <Typography variant="h6">
+                    <span style={{ color: "#581845" }}>Today's Deaths : </span>
                     <span
                       style={{
                         color: "red",
@@ -138,7 +139,7 @@ const UserCountryCases = (props) => {
                       {data.todayDeaths}
                     </span>
                   </Typography>
-                </div>
+                </Container>
               );
             })
           )}

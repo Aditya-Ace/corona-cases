@@ -59,42 +59,65 @@ const WorldWideCases = (props) => {
           ) : (
             <Container>
               <Typography variant="h6" className={classes.textColor}>
-                Last Updated: <Moment date={globalData.updated} />
+                Last Updated:{" "}
+                <Moment style={{ color: "#000" }} date={globalData.updated} />
               </Typography>
               <hr />
               <Typography variant="h6" className={classes.textColor}>
-                Total Cases: {Number(globalData.cases).toLocaleString("en-IN")}
+                Total Cases:{" "}
+                <span style={{ color: "#C70039" }}>
+                  {Number(globalData.cases).toLocaleString("en-IN")}
+                </span>
               </Typography>
               <Typography variant="h6" className={classes.textColor}>
                 Today's Cases:{" "}
-                {Number(globalData.todayCases).toLocaleString("en-IN")}
+                <span style={{ color: "#C70039" }}>
+                  {Number(globalData.todayCases).toLocaleString("en-IN")}
+                </span>
               </Typography>
               <Typography variant="h6" className={classes.textColor}>
-                Deaths: {Number(globalData.deaths).toLocaleString("en-IN")}
+                Deaths:{" "}
+                <span style={{ color: "#C70039" }}>
+                  {Number(globalData.deaths).toLocaleString("en-IN")}
+                </span>
               </Typography>
               <Typography variant="h6" className={classes.textColor}>
                 Today's Deaths:{" "}
-                {Number(globalData.todayDeaths).toLocaleString("en-IN")}
+                <span style={{ color: "#C70039" }}>
+                  {Number(globalData.todayDeaths).toLocaleString("en-IN")}
+                </span>
               </Typography>
               <Typography variant="h6" className={classes.textColor}>
                 Recovered:{" "}
-                {Number(globalData.recovered).toLocaleString("en-IN")}
+                <span style={{ color: "#C70039" }}>
+                  {Number(globalData.recovered).toLocaleString("en-IN")}
+                </span>
               </Typography>
               <Typography variant="h6" className={classes.textColor}>
                 Total Active:{" "}
-                {Number(globalData.active).toLocaleString("en-IN")}
+                <span style={{ color: "#C70039" }}>
+                  {Number(globalData.active).toLocaleString("en-IN")}
+                </span>
               </Typography>
               <Typography variant="h6" className={classes.textColor}>
                 Total Critical:{" "}
-                {Number(globalData.critical).toLocaleString("en-IN")}
+                <span style={{ color: "#C70039" }}>
+                  {" "}
+                  {Number(globalData.critical).toLocaleString("en-IN")}
+                </span>
               </Typography>
               <Typography variant="h6" className={classes.textColor}>
                 Total Tests Performed:{" "}
-                {Number(globalData.tests).toLocaleString("en-IN")}
+                <span style={{ color: "#C70039" }}>
+                  {" "}
+                  {Number(globalData.tests).toLocaleString("en-IN")}
+                </span>
               </Typography>
               <Typography variant="h6" className={classes.textColor}>
                 Total Affected Countried:{" "}
-                {Number(globalData.affectedCountries).toLocaleString("en-IN")}
+                <span style={{ color: "#C70039" }}>
+                  {Number(globalData.affectedCountries).toLocaleString("en-IN")}
+                </span>
               </Typography>
             </Container>
           )}
