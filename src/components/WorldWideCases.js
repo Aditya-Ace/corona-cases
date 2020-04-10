@@ -1,42 +1,43 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Grid from "@material-ui/core/Grid";
+import Moment from "react-moment";
+import { Container } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   cardContents: {
     background: "linear-gradient(to right, #ece9e6, #ffffff)",
-    textAlign: "center"
+    textAlign: "center",
   },
   textColor: {
-    color: " #581845 "
-  }
+    color: " #581845 ",
+  },
 }));
 
-const WorldWideCases = props => {
+const WorldWideCases = (props) => {
   const theme = useTheme();
   const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
   const classes = useStyles();
 
-  const [globalData, setGlobalData] = useState([]);
+  const [globalData, setGlobalData] = useState({});
   useEffect(() => {
     let url = process.env.REACT_APP_PROD_API_URL;
     axios
       .get(`${url}all`, {
-        headers: { "Access-Control-Allow-Origin": "*" }
+        headers: { "Access-Control-Allow-Origin": "*" },
       })
-      .then(res => {
+      .then((res) => {
         if (res.status === 200) {
-          let globalDataArray = Object.entries(res.data);
-          globalDataArray.splice(-1);
-          setGlobalData(globalDataArray);
+          console.log(res.data);
+          setGlobalData(res.data);
         }
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   }, []);
 
   return (
@@ -56,24 +57,46 @@ const WorldWideCases = props => {
           {globalData.length === 0 ? (
             <Typography variant="h6">Loading...</Typography>
           ) : (
-            globalData.map(([key, value]) => {
-              return (
-                <Typography key={key} variant={matchesMD ? "h6" : "h5"}>
-                  <span style={{ fontSize: "1.5em", color: " #273746 " }}>
-                    {key.charAt(0).toUpperCase() + key.slice(1)} :{" "}
-                  </span>
-                  <span
-                    style={{
-                      fontSize: "1em",
-                      fontWeight: "bold",
-                      color: "#C70039"
-                    }}
-                  >
-                    {value - 1}
-                  </span>
-                </Typography>
-              );
-            })
+            <Container>
+              <Typography variant="h6" className={classes.textColor}>
+                Last Updated: <Moment date={globalData.updated} />
+              </Typography>
+              <hr />
+              <Typography variant="h6" className={classes.textColor}>
+                Total Cases: {Number(globalData.cases).toLocaleString("en-IN")}
+              </Typography>
+              <Typography variant="h6" className={classes.textColor}>
+                Today's Cases:{" "}
+                {Number(globalData.todayCases).toLocaleString("en-IN")}
+              </Typography>
+              <Typography variant="h6" className={classes.textColor}>
+                Deaths: {Number(globalData.deaths).toLocaleString("en-IN")}
+              </Typography>
+              <Typography variant="h6" className={classes.textColor}>
+                Today's Deaths:{" "}
+                {Number(globalData.todayDeaths).toLocaleString("en-IN")}
+              </Typography>
+              <Typography variant="h6" className={classes.textColor}>
+                Recovered:{" "}
+                {Number(globalData.recovered).toLocaleString("en-IN")}
+              </Typography>
+              <Typography variant="h6" className={classes.textColor}>
+                Total Active:{" "}
+                {Number(globalData.active).toLocaleString("en-IN")}
+              </Typography>
+              <Typography variant="h6" className={classes.textColor}>
+                Total Critical:{" "}
+                {Number(globalData.critical).toLocaleString("en-IN")}
+              </Typography>
+              <Typography variant="h6" className={classes.textColor}>
+                Total Tests Performed:{" "}
+                {Number(globalData.tests).toLocaleString("en-IN")}
+              </Typography>
+              <Typography variant="h6" className={classes.textColor}>
+                Total Affected Countried:{" "}
+                {Number(globalData.affectedCountries).toLocaleString("en-IN")}
+              </Typography>
+            </Container>
           )}
         </CardContent>
       </Card>

@@ -7,16 +7,16 @@ import CardContent from "@material-ui/core/CardContent";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Typography from "@material-ui/core/Typography";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   cardContents: {
     background: "linear-gradient(to right, #ece9e6, #ffffff)",
-    textAlign: "center"
+    textAlign: "center",
   },
   textColor: {
-    color: " #581845"
-  }
+    color: " #581845",
+  },
 }));
-const UserCountryCases = props => {
+const UserCountryCases = (props) => {
   const theme = useTheme();
   const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
   const classes = useStyles();
@@ -33,13 +33,13 @@ const UserCountryCases = props => {
 
       if (countryIn.length > 2) {
         const responseFromCorona = await axios(`${url}countries`);
-        const userLocationResult = responseFromCorona.data.map(data => data);
+        const userLocationResult = responseFromCorona.data.map((data) => data);
         setCountryData(
-          userLocationResult.filter(data => data.country === countryIn)
+          userLocationResult.filter((data) => data.country === countryIn)
         );
         if (countryIn.includes("United States")) {
           setCountryData(
-            userLocationResult.filter(data => data.country === "USA")
+            userLocationResult.filter((data) => data.country === "USA")
           );
         }
       }
@@ -93,7 +93,7 @@ const UserCountryCases = props => {
                     <span
                       style={{
                         color: colors(data.critical),
-                        fontWeight: "bold"
+                        fontWeight: "bold",
                       }}
                     >
                       {data.critical}
@@ -101,9 +101,7 @@ const UserCountryCases = props => {
                   </Typography>
                   <Typography variant={matchesMD ? "h6" : "h5"}>
                     Deaths :{" "}
-                    <span
-                      style={{ color: colors(data.deaths), fontWeight: "bold" }}
-                    >
+                    <span style={{ color: "red", fontWeight: "bold" }}>
                       {data.deaths}
                     </span>
                   </Typography>
@@ -111,8 +109,8 @@ const UserCountryCases = props => {
                     Recovered :{" "}
                     <span
                       style={{
-                        color: colors(data.recovered),
-                        fontWeight: "bold"
+                        color: "#58d68d",
+                        fontWeight: "bold",
                       }}
                     >
                       {data.recovered}
@@ -123,7 +121,7 @@ const UserCountryCases = props => {
                     <span
                       style={{
                         color: colors(data.todayCases),
-                        fontWeight: "bold"
+                        fontWeight: "bold",
                       }}
                     >
                       {data.todayCases}
@@ -133,8 +131,8 @@ const UserCountryCases = props => {
                     Today's Deaths :{" "}
                     <span
                       style={{
-                        color: colors(data.todayDeaths),
-                        fontWeight: "bold"
+                        color: "red",
+                        fontWeight: "bold",
                       }}
                     >
                       {data.todayDeaths}
