@@ -29,7 +29,7 @@ const App = () => {
                 style={{ color: "#eee" }}
                 variant={matchesMD ? "h4" : "h2"}
               >
-                Corona Virus Cases
+                Covid-19 WorldWide
               </Typography>
             </CardContent>
           </Card>

@@ -65,7 +65,7 @@ const UserCountryCases = (props) => {
     <Grid item>
       <Card
         className={classes.cardContents}
-        style={{ minWidth: "20em", minHeight: "20em" }}
+        style={{ minWidth: "20em", minHeight: "20em", padding: "1em" }}
       >
         <CardContent>
           <Typography
