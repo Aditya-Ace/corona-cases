@@ -86,7 +86,7 @@ const UserCountryCases = (props) => {
                     <span
                       style={{ color: colors(data.cases), fontWeight: "bold" }}
                     >
-                      {data.cases}
+                      {Number(data.cases).toLocaleString("en-IN")}
                     </span>
                   </Typography>
                   <Typography variant="h6">
@@ -97,13 +97,13 @@ const UserCountryCases = (props) => {
                         fontWeight: "bold",
                       }}
                     >
-                      {data.critical}
+                      {Number(data.critical).toLocaleString("en-IN")}
                     </span>
                   </Typography>
                   <Typography variant="h6">
                     <span style={{ color: "#581845" }}>Deaths : </span>
                     <span style={{ color: "red", fontWeight: "bold" }}>
-                      {data.deaths}
+                      {Number(data.deaths).toLocaleString("en-IN")}
                     </span>
                   </Typography>
                   <Typography variant="h6">
@@ -114,7 +114,7 @@ const UserCountryCases = (props) => {
                         fontWeight: "bold",
                       }}
                     >
-                      {data.recovered}
+                      {Number(data.recovered).toLocaleString("en-IN")}
                     </span>
                   </Typography>
                   <Typography variant="h6">
@@ -125,7 +125,7 @@ const UserCountryCases = (props) => {
                         fontWeight: "bold",
                       }}
                     >
-                      {data.todayCases}
+                      {Number(data.todayCases).toLocaleString("en-IN")}
                     </span>
                   </Typography>
                   <Typography variant="h6">
@@ -136,7 +136,7 @@ const UserCountryCases = (props) => {
                         fontWeight: "bold",
                       }}
                     >
-                      {data.todayDeaths}
+                      {Number(data.todayDeaths).toLocaleString("en-IN")}
                     </span>
                   </Typography>
                 </Container>
