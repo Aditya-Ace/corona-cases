@@ -113,7 +113,7 @@ const WorldWideCases = (props) => {
                 </span>
               </Typography>
               <Typography variant="h6" className={classes.textColor}>
-                Total Affected Countried:{" "}
+                Total Affected Countries:{" "}
                 <span style={{ color: "#C70039" }}>
                   {Number(globalData.affectedCountries).toLocaleString("en-IN")}
                 </span>

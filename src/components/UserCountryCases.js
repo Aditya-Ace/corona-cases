@@ -81,6 +81,7 @@ const UserCountryCases = (props) => {
             countryData.map((data, i) => {
               return (
                 <Container key={i}>
+                  {console.log(data)}
                   <Typography variant="h6">
                     <span style={{ color: "#581845" }}>Cases : </span>
                     <span
@@ -137,6 +138,30 @@ const UserCountryCases = (props) => {
                       }}
                     >
                       {Number(data.todayDeaths).toLocaleString("en-IN")}
+                    </span>
+                  </Typography>
+                  <Typography variant="h6">
+                    <span style={{ color: "#581845" }}>Total Active : </span>
+                    <span
+                      style={{
+                        color: "red",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      {Number(data.active).toLocaleString("en-IN")}
+                    </span>
+                  </Typography>
+                  <Typography variant="h6">
+                    <span style={{ color: "#581845" }}>
+                      Total Tests Completed :{" "}
+                    </span>
+                    <span
+                      style={{
+                        color: "red",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      {Number(data.tests).toLocaleString("en-IN")}
                     </span>
                   </Typography>
                 </Container>
