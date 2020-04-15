@@ -30,7 +30,11 @@ const UserCountryCases = (props) => {
       let countryUrl = process.env.REACT_APP_PROD_API_URL_USER_COUNTRY;
       let key = process.env.REACT_APP_SECRET_KEY;
       const responseFromUserLocationData = await axios(`${countryUrl}${key}`);
-      setCountryIn(responseFromUserLocationData.data.country_name);
+      setCountryIn(
+        responseFromUserLocationData
+          ? responseFromUserLocationData.data.country_name
+          : "India"
+      );
 
       if (countryIn.length > 2) {
         const responseFromCorona = await axios(`${url}countries`);
